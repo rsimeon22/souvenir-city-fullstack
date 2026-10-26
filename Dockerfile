@@ -8,9 +8,12 @@ RUN apt-get update && apt-get install -y \
     && rm -rf /var/lib/apt/lists/*
 
 # Configure Apache
-RUN a2dismod mpm_event mpm_worker || true \
-    && a2enmod mpm_prefork rewrite
-
+# Explicitly enable only the prefork MPM
+RUN rm -f /etc/apache2/mods-enabled/mpm_*.load \
+    /etc/apache2/mods-enabled/mpm_*.conf \
+    && a2enmod mpm_prefork rewrite \
+    && apache2ctl -t \
+    && apache2ctl -M 2>&1 | grep mpm
 # Set working directory
 WORKDIR /var/www/html
 
