@@ -36,4 +36,4 @@ EXPOSE 80
 
 CMD ["apache2-foreground"]
 
-CMD ["sh", "-c", "echo '=== APACHE MPM MODULES ==='; apache2ctl -M 2>&1 | grep mpm; echo '=== APACHE CONFIG TEST ==='; apache2ctl -t; echo '=== STARTING APACHE ==='; exec apache2-foreground"]
+CMD ["sh", "-c", "echo '=== ENABLED MPM FILES ==='; ls -la /etc/apache2/mods-enabled/mpm* 2>&1; echo '=== MPM LOADMODULE DIRECTIVES ==='; grep -RInE '^[[:space:]]*LoadModule[[:space:]]+mpm_' /etc/apache2/mods-enabled /etc/apache2/apache2.conf 2>&1; echo '=== APACHE CONFIG INCLUDES ==='; grep -n 'Include' /etc/apache2/apache2.conf; echo '=== HOLDING CONTAINER ==='; sleep 3600"]
