@@ -35,3 +35,5 @@ RUN chown -R www-data:www-data /var/www/html
 EXPOSE 80
 
 CMD ["apache2-foreground"]
+
+CMD ["sh", "-c", "echo '=== APACHE MPM MODULES ==='; apache2ctl -M 2>&1 | grep mpm; echo '=== APACHE CONFIG TEST ==='; apache2ctl -t; echo '=== STARTING APACHE ==='; exec apache2-foreground"]
