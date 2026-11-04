@@ -14,7 +14,6 @@ if (isset($_POST["submit"])) {
         // Includes database handler and functions page
         include 'dbh.inc.php';
         include 'functions.inc.php';
-        echo "We see you!!";
     } else {
         echo "File not found";
         die;
