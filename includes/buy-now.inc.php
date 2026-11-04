@@ -9,9 +9,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $product_name = $_POST['product_name'];
     $product_price = $_POST['product_price'];
     $quantity = $_POST['quantity'];
-    $size = $_POST["size"];
 }
-    //include 'dbh.inc.php';
+
+include 'dbh.inc.php';
     
     if (isset($_SESSION['cart_system'][$product_id])) {
         $_SESSION['cart_system'][$product_id]['quantity'] += $quantity;
