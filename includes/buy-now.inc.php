@@ -22,7 +22,6 @@ include 'dbh.inc.php';
             'name' => $product_name,
             'price' => $product_price,
             'quantity' => $quantity,
-            'size' => $size
         ];
     }
     
@@ -30,7 +29,9 @@ include 'dbh.inc.php';
     // Redirect to the checkout page
     echo json_encode([
         'success' => true,
-        'name' => $product_name
+        'name' => $product_name,
+        'price' => $product_price,
+        'quantity' => $quantity
     ]);
     
     header('Location: ../pages/top-of-home-page/checkout-page.php');
