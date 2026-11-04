@@ -185,7 +185,7 @@ if (!isset($_SESSION['cart_system'])) {
     });
 
     function proceedWithStripe() {
-      const stripe = Stripe("pk_test_51RFgFoKjGiDAzShfmTO2BFFkDSsQ2TSextxdWUzk6XjALcPwWqQ6Ge2BuGA2ZH6IV6gNx58QD4JPcurXHxBowWFR00kYc1bzl7");
+      const stripe = Stripe(<?php echo json_encode(getenv('STRIPE_PUBLISHABLE_KEY')); ?>);
 
       fetch('../../includes/create-checkout-session.php', {
         method: 'POST',

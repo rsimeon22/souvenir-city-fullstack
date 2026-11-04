@@ -33,7 +33,7 @@ if (!$stripeSecretKey) {
 
 $stripe = new \Stripe\StripeClient($stripeSecretKey);
 
-$YOUR_DOMAIN = 'http://localhost';
+$YOUR_DOMAIN = 'souvenir-city-fullstack-production.up.railway.app';
 
 // Make sure cart data is passed correctly
 $cartData = json_decode(file_get_contents('php://input'), true);
