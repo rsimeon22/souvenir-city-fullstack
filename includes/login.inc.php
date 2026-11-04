@@ -9,7 +9,6 @@ if (isset($_POST["submit"])) {
     if (file_exists('functions.inc.php')) {
         include 'dbh.inc.php';
         include 'functions.inc.php';
-        echo "We see you!!";
     } else {
         echo "File not found";
         die;
